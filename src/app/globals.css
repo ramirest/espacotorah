@@ -1,26 +1,86 @@
 @import "tailwindcss";
 
+@theme {
+  --color-ink: #0a1a30;
+  --color-midnight: #0b1f3a;
+  --color-royal: #14365f;
+  --color-tekhelet: #1f5fb0;
+  --color-gold: #c9a24b;
+  --color-gold-soft: #dcc079;
+  --color-cream: #f8f4ea;
+  --color-parchment: #efe6d3;
+  --color-sand: #e3d6b8;
+
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-body: "Inter", system-ui, sans-serif;
+
+  --shadow-luxe: 0 30px 60px -20px rgba(10, 26, 48, 0.45);
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f8f4ea;
+  --foreground: #0a1a30;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
+
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+
+::selection {
+  background: var(--color-gold);
+  color: var(--color-ink);
+}
+
+/* Elegant scrollbar */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #0b1f3a; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--color-gold), var(--color-royal));
+  border-radius: 9999px;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.text-gradient-gold {
+  background: linear-gradient(120deg, #f0dca0, #c9a24b 40%, #f0dca0 80%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 6s linear infinite;
+}
+
+.glass {
+  background: rgba(248, 244, 234, 0.06);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(220, 192, 121, 0.18);
+}
+
+.hairline {
+  background-image: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+  height: 1px;
+}
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }

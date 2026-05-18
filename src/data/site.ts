@@ -19,7 +19,6 @@ export const nav = [
   { label: "Comunidade", href: "/comunidade" },
   { label: "Museu", href: "/museu", highlight: true },
   { label: "Sobre Nós", href: "/sobre" },
-  { label: "Blog", href: "/blog" },
   { label: "Eventos", href: "/eventos" },
   { label: "Contato", href: "/contato" },
 ];

@@ -1,11 +1,13 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { nav, site } from "@/data/site";
+import logo from "../../public/logo.webp";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -30,17 +32,22 @@ export default function Header() {
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5">
-        <Link href="/" className="group flex items-center gap-3">
-          <span className="grid h-11 w-11 place-items-center rounded-full border border-gold/50 text-gold transition-transform group-hover:rotate-12">
-            <StarOfDavid />
-          </span>
-          <span className="leading-tight">
-            <span className="block font-display text-xl font-semibold text-cream">
-              {site.shortName}
-            </span>
-            <span className="block text-[0.62rem] uppercase tracking-[0.34em] text-gold-soft">
-              {site.tagline}
-            </span>
+        <Link href="/" aria-label={site.name} className="group flex items-center">
+          <span
+            className={`flex items-center rounded-2xl bg-white shadow-[0_8px_30px_-12px_rgba(11,31,58,0.6)] ring-1 ring-white/60 transition-all duration-500 group-hover:ring-gold/70 ${
+              scrolled ? "px-4 py-2" : "px-5 py-2.5"
+            }`}
+          >
+            <Image
+              src={logo}
+              alt={site.name}
+              priority
+              placeholder="blur"
+              sizes="198px"
+              className={`h-auto transition-all duration-500 ${
+                scrolled ? "w-[168px]" : "w-[198px]"
+              }`}
+            />
           </span>
         </Link>
 
@@ -109,14 +116,5 @@ export default function Header() {
         )}
       </AnimatePresence>
     </header>
-  );
-}
-
-function StarOfDavid() {
-  return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4">
-      <path d="M12 2 4 16h16L12 2Z" />
-      <path d="M12 22 4 8h16L12 22Z" />
-    </svg>
   );
 }

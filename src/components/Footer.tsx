@@ -1,6 +1,8 @@
 import Link from "next/link";
+import Image from "next/image";
 import { MapPin, Phone, Mail } from "lucide-react";
 import { nav, site } from "@/data/site";
+import logo from "../../public/logo.webp";
 
 function Instagram({ size = 17 }: { size?: number }) {
   return (
@@ -31,11 +33,13 @@ export default function Footer() {
     <footer className="bg-midnight text-cream">
       <div className="mx-auto grid max-w-7xl gap-12 px-5 py-16 md:grid-cols-[1.4fr_1fr_1fr]">
         <div>
-          <p className="font-display text-3xl text-gradient-gold">{site.name}</p>
-          <p className="mt-1 text-sm uppercase tracking-[0.3em] text-gold-soft">
+          <span className="inline-flex rounded-2xl bg-white px-5 py-4 shadow-[0_18px_50px_-20px_rgba(0,0,0,0.7)] ring-1 ring-white/50">
+            <Image src={logo} alt={site.name} className="h-12 w-auto" />
+          </span>
+          <p className="mt-5 text-sm uppercase tracking-[0.3em] text-gold-soft">
             {site.hebrew} · {site.tagline}
           </p>
-          <p className="mt-6 max-w-sm text-sm leading-relaxed text-cream/70">
+          <p className="mt-5 max-w-sm text-sm leading-relaxed text-cream/70">
             Uma ferramenta para a implementação da Sagrada Torah na Terra — ser
             luz para Israel e para todas as nações.
           </p>

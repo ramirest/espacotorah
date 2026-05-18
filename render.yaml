@@ -7,6 +7,10 @@ services:
     buildCommand: npm ci && npm run build
     staticPublishPath: ./out
     pullRequestPreviewsEnabled: true
+    envVars:
+      # ID do formulário Formspree (definir o valor no painel do Render).
+      - key: NEXT_PUBLIC_FORMSPREE_ID
+        sync: false
     headers:
       - path: /*
         name: Cache-Control
